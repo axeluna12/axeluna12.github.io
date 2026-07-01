@@ -1,3 +1,10 @@
+<!-- CURSOR PERSONALIZADO -->
+<div class="cursor"
+  [style.left.px]="cursorX()"
+  [style.top.px]="cursorY()"
+  [class.big]="cursorBig()">
+</div>
+
 <!-- NAV -->
 <nav [class.scrolled]="scrolled()">
   <a class="nav-logo mono" href="#hero">AL.</a>
@@ -16,22 +23,24 @@
 
 <!-- HERO -->
 <section id="hero" class="hero">
-  <p class="mono accent hero-greeting">Hola, me llamo</p>
-  <h1 class="hero-name">Axel Luna.</h1>
-  <h2 class="hero-title">Construyo automatizaciones que trabajan mientras dormís.</h2>
-  <p class="hero-desc">
+  <p class="mono accent hero-greeting fade-up">Hola, me llamo</p>
+  <h1 class="hero-name fade-up" style="transition-delay:0.1s">Axel Luna.</h1>
+  <h2 class="hero-title fade-up" style="transition-delay:0.2s">
+    {{ heroTitle() }}<span class="cursor-blink" [class.hidden]="typingDone()">|</span>
+  </h2>
+  <p class="hero-desc fade-up" style="transition-delay:0.3s">
     Desarrollador especializado en bots conversacionales, flujos de automatización con
     <span class="accent">n8n</span> e integración de IA para negocios argentinos.
     De la idea al bot en producción.
   </p>
-  <a class="btn-outline" href="#proyectos">Ver proyectos</a>
+  <a class="btn-outline fade-up" style="transition-delay:0.4s" href="#proyectos">Ver proyectos</a>
 </section>
 
 <!-- SOBRE MÍ -->
 <section id="sobre-mi" class="section">
-  <h2 class="section-title"><span class="mono accent">01.</span> Sobre mí</h2>
+  <h2 class="section-title fade-up"><span class="mono accent">01.</span> Sobre mí</h2>
   <div class="about-grid">
-    <div class="about-text">
+    <div class="about-text fade-up" style="transition-delay:0.1s">
       <p>
         Soy desarrollador de automatización con base en Argentina. Me especializo en conectar
         WhatsApp, Instagram, AFIP, Mercado Pago y herramientas de IA para que los negocios
@@ -44,19 +53,19 @@
       </p>
       <p>
         Trabajo con gestorías automotrices, distribuidores mayoristas y profesionales independientes
-        que necesitan automatizar procesos repetitivos: atención al cliente, facturación, agenda de turnos.
+        que necesitan automatizar: atención al cliente, facturación, agenda de turnos.
       </p>
     </div>
-    <div class="about-card">
+    <div class="about-card fade-up" style="transition-delay:0.2s">
       <img class="about-avatar" src="avatar.jpg" alt="Axel Luna">
       <p class="mono" style="color: var(--green); font-size: 0.85rem; margin-top: 12px;">axelunaezequiel&#64;gmail.com</p>
-      <div class="about-stats">
+      <div class="about-stats stats-trigger">
         <div class="stat">
-          <span class="stat-num accent">5+</span>
+          <span class="stat-num accent">{{ stat1() }}+</span>
           <span class="stat-label">Bots en producción</span>
         </div>
         <div class="stat">
-          <span class="stat-num accent">100%</span>
+          <span class="stat-num accent">{{ stat2() }}%</span>
           <span class="stat-label">Uptime objetivo</span>
         </div>
       </div>
@@ -66,10 +75,10 @@
 
 <!-- PROYECTOS -->
 <section id="proyectos" class="section">
-  <h2 class="section-title"><span class="mono accent">02.</span> Proyectos</h2>
+  <h2 class="section-title fade-up"><span class="mono accent">02.</span> Proyectos</h2>
 
-  @for (p of projects; track p.num) {
-    <div class="project-card">
+  @for (p of projects; track p.num; let i = $index) {
+    <div class="project-card fade-up" [style.transition-delay]="(i * 0.1) + 's'">
       <div class="project-left">
         <div class="project-mock" [style.--accent]="p.accent">
           <div class="mock-screen">
@@ -109,11 +118,11 @@
 
 <!-- STACK -->
 <section id="stack" class="section">
-  <h2 class="section-title"><span class="mono accent">03.</span> Stack</h2>
-  <p class="section-desc">Las herramientas con las que construyo y mantengo soluciones en producción.</p>
+  <h2 class="section-title fade-up"><span class="mono accent">03.</span> Stack</h2>
+  <p class="section-desc fade-up">Las herramientas con las que construyo y mantengo soluciones en producción.</p>
   <div class="skills-grid">
-    @for (s of skills; track s.name) {
-      <div class="skill-chip">
+    @for (s of skills; track s.name; let i = $index) {
+      <div class="skill-chip fade-up" [style.transition-delay]="(i * 0.05) + 's'">
         <span class="skill-icon">{{ s.icon }}</span>
         <span class="mono skill-name">{{ s.name }}</span>
       </div>
@@ -123,15 +132,15 @@
 
 <!-- CONTACTO -->
 <section id="contacto" class="section contact-section">
-  <p class="mono accent contact-label">04. ¿Hablamos?</p>
-  <h2 class="contact-title">Tengo algo en mente</h2>
-  <p class="contact-desc">
+  <p class="mono accent contact-label fade-up">04. ¿Hablamos?</p>
+  <h2 class="contact-title fade-up" style="transition-delay:0.1s">Tengo algo en mente</h2>
+  <p class="contact-desc fade-up" style="transition-delay:0.2s">
     Si tenés un proceso repetitivo que consume tiempo, un bot que querés construir o
     una integración que parece imposible — escribime. Respondo rápido.
   </p>
-  <a class="btn-outline" href="mailto:axelunaezequiel@gmail.com">Escribime un email</a>
+  <a class="btn-outline fade-up" style="transition-delay:0.3s" href="mailto:axelunaezequiel@gmail.com">Escribime un email</a>
 
-  <div class="social-links">
+  <div class="social-links fade-up" style="transition-delay:0.4s">
     <a href="https://github.com/axeluna12" target="_blank" rel="noopener" class="mono">GitHub</a>
     <span class="social-sep">·</span>
     <a href="https://www.linkedin.com/in/axel-luna1212/" target="_blank" rel="noopener" class="mono">LinkedIn</a>
